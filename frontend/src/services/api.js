@@ -243,3 +243,35 @@ export async function getRouteTransport(place) {
   const { getNearbyTransport } = await import('./liveSearch.js')
   return getNearbyTransport(place.lat, place.lon)
 }
+
+/**
+ * Fetch nearby tourist attractions, museums, historic sites and viewpoints
+ * from the backend /tourist-places endpoint (which uses the Overpass API).
+ *
+ * @param {{ lat: number, lon: number }} location - user's coordinates
+ * @param {{ radius?: number, limit?: number }} options
+ * @returns {Promise<Array>} normalized place objects
+ */
+export async function getNearbyTouristPlaces(location, { radius = 10000, limit = 30 } = {}) {
+  if (!location || typeof location.lat !== 'number' || typeof location.lon !== 'number') {
+    return []
+  }
+  const params = new URLSearchParams({
+    lat: String(location.lat),
+    lon: String(location.lon),
+    radius: String(radius),
+    limit: String(limit)
+  })
+  const data = await apiRequest(`/tourist-places?${params.toString()}`)
+  return (data.places || []).map((p) =>
+    normalizePlace({
+      ...p,
+      // Map backend field names to frontend normalizer expectations
+      latitude: p.latitude,
+      longitude: p.longitude,
+      source: 'overpass',
+      description: p.description || `Tourist ${p.type || 'attraction'}`,
+      distance_km: p.distance_km
+    })
+  )
+}

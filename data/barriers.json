@@ -23,5 +23,19 @@
     "reported_at": "2026-08-20T06:41:48.216760+00:00",
     "status": "Under Verification",
     "updated": "Just now"
+  },
+  {
+    "place_id": null,
+    "barrier_type": "Broken Lift",
+    "description": "fffddddddddddddddd",
+    "confidence": "High",
+    "reported_by": "Frontend User",
+    "destination_name": "Odisha",
+    "location": "Odisha",
+    "status": "Under Verification",
+    "updated": "Just now",
+    "photo_name": null,
+    "id": 3,
+    "reported_at": "2026-10-03T17:00:09.402652+00:00"
   }
 ]

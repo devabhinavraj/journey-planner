@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PlaceCard from '../components/PlaceCard.jsx'
 import { SORT_OPTIONS, ACCESSIBILITY_NEEDS } from '../config/accessibility.js'
 import { recommendJourney } from '../services/api.js'
@@ -109,6 +109,15 @@ export default function Results() {
             <span aria-hidden="true">{cat.icon}</span> {cat.label} near me
           </button>
         ))}
+        {/* Tourist Spots — dedicated page backed by the Overpass /tourist-places API */}
+        <Link
+          to="/nearby-tourist"
+          id="nearby-tourist-link"
+          className="hc-surface shrink-0 inline-flex items-center gap-1.5 rounded-full border-2 border-teal-600 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800 hover:bg-teal-100 transition-colors"
+          title="Explore all tourist attractions, museums and historic sites near you"
+        >
+          <span aria-hidden="true">🗺️</span> Tourist Spots near me
+        </Link>
       </div>
 
       <div className="flex items-center gap-3 mb-6 overflow-x-auto pb-1" role="group" aria-label="Sort results">

@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.routers import barriers, location, places, recommendations
+from backend.routers import barriers, location, places, recommendations, tourist
 
 
 def _cors_origins() -> List[str]:
@@ -48,6 +48,7 @@ app.include_router(places.router)
 app.include_router(recommendations.router)
 app.include_router(barriers.router)
 app.include_router(location.router)
+app.include_router(tourist.router)
 
 
 @app.get("/")

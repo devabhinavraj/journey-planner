@@ -8,6 +8,7 @@ import Results from './pages/Results.jsx'
 import RoutePage from './pages/Route.jsx'
 import ReportBarrier from './pages/ReportBarrier.jsx'
 import BarrierStatus from './pages/BarrierStatus.jsx'
+import NearbyTouristPlaces from './pages/NearbyTouristPlaces.jsx'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/route/:id" element={<RoutePage />} />
             <Route path="/report-barrier" element={<ReportBarrier />} />
             <Route path="/barrier-status" element={<BarrierStatus />} />
+            <Route path="/nearby-tourist" element={<NearbyTouristPlaces />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ErrorBoundary>
